@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from controls.keycontroller import execute_command
+from controller.keycontroller import execute_command
 __author__ = 'Kellan Childers'
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import os
 from json import load
-from controls.commanddict import commands
+from controller.commanddict import commands
 __author__ = 'Kellan Childers'
 
 
@@ -11,7 +11,7 @@ def execute_command(key):
     :param key: the key to call the command.
     :return: the result of the command called.
     """
-    # os.getcwd here returns the path of the whole app, not /controls.
+    # os.getcwd here returns the path of the whole app, not /controller.
     with open(os.path.join(os.getcwd(), 'settings/keymap.config'), 'r') as config_file:
         keymap = load(config_file)
 
