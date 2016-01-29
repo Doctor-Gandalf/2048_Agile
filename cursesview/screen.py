@@ -1,7 +1,7 @@
 import curses
 import cursesview.util as util
 __author__ = 'Kellan Childers'
-"""THIS IS ONLY A PLACEHOLDER."""
+"""Currently unused and depreciated, so only use this as reference on how curses works"""
 
 
 class Screen:
