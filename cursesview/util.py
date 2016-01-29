@@ -3,23 +3,26 @@ from math import floor
 __author__ = 'Kellan Childers'
 
 
-def add_title(window, title,  window_y=0, bold=True, underline=True):
+def add_title(window, title,  window_y=0, bold=True, underline=True, color_scheme=1):
     """Add a title centered on a line.
 
     :param window: the window to title
     :param title: the title to add
     :param window_y: the height of the title
-    :param bold: whether or not to bold the title
+    :param bold: whether or not to bold the title (default True)
     :type bold: Boolean
-    :param underline: whether or not to underline the title
+    :param underline: whether or not to underline the title (default True)
     :type underline: Boolean
+    :param color_scheme: the scheme to use for coloring the title (default 1)
     :return: null
     """
     height, width = window.getmaxyx()
     _, title_x = center(height, width, 1, len(title))
     window.addstr(window_y, title_x, title,
                   (curses.A_BOLD if bold else 0) |
-                  (curses.A_UNDERLINE if underline else 0))
+                  (curses.A_UNDERLINE if underline else 0)|
+                  (curses.color_pair(color_scheme)))
+    window.refresh()
 
 
 def center(console_height, console_width, window_height, window_width):
@@ -34,20 +37,6 @@ def center(console_height, console_width, window_height, window_width):
     start_y = floor((console_height-window_height)/2)
     start_x = floor((console_width-window_width)/2)
     return start_y, start_x
-
-
-def size_lim(console_height, console_width, bound_height, bound_width):
-    """Limit the size of a window if the console is over a certain size.
-
-    :param console_height: the height of the window
-    :param console_width: the width of the window
-    :param bound_height: the minimum height to start binding the window
-    :param bound_width: the minimum width to start binding the window
-    :return: a pair of dimensions for the window
-    """
-    y = console_height if console_height <= bound_height else floor(7*console_height/8)
-    x = console_width if console_width <= bound_width else floor(7*console_width/8)
-    return y, x
 
 
 def color_border(window, start_y, start_x, stop_y, stop_x, color):
@@ -73,3 +62,17 @@ def color_border(window, start_y, start_x, stop_y, stop_x, color):
     except curses.error:
         # curses.error is raised at end of line and can safely be ignored.
         pass
+
+
+def size_lim(console_height, console_width, bound_height, bound_width):
+    """Limit the size of a window if the console is over a certain size.
+
+    :param console_height: the height of the window
+    :param console_width: the width of the window
+    :param bound_height: the minimum height to start binding the window
+    :param bound_width: the minimum width to start binding the window
+    :return: a pair of dimensions for the window
+    """
+    y = console_height if console_height <= bound_height else floor(7*console_height/8)
+    x = console_width if console_width <= bound_width else floor(7*console_width/8)
+    return y, x
