@@ -1,8 +1,7 @@
 from curses import COLOR_BLACK, COLOR_RED, COLOR_GREEN, \
     COLOR_YELLOW, COLOR_BLUE, COLOR_MAGENTA, COLOR_CYAN, COLOR_WHITE
 __author__ = 'Kellan Childers'
-"""Compile all user-facing functions here with easy to remember names to allow keymapping.
-   Actual functions should be defined in model.keyfunctions.py."""
+"""Compile all colors curses allows, and give them user readable names here."""
 
 
 colors = {"black": COLOR_BLACK,
