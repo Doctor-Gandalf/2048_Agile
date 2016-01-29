@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+from os import chdir
+import os.path
 import curses
 import cursesview.util as util
 from controller.colorcontroller import create_colorschemes
@@ -27,5 +29,8 @@ def app(stdscr):
     stdscr.getkey()
 
 if __name__ == "__main__":
+    # App has to change directories in case it was opened outside its folder.
+    chdir(os.path.dirname(os.path.realpath(__file__)))
+
     # curses.wrapper ensures that program will always fully exit from curses mode if an error occurs.
     curses.wrapper(app)
