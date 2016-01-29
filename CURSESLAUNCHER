@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import curses
+import cursesview.util as util
 from cursesview.screen import Screen
-from cursesview.util import center_start
 __author__ = 'Kellan Childers'
 """THIS IS ONLY A PLACEHOLDER."""
 
@@ -20,19 +20,19 @@ def app(stdscr):
     # Set the background of the app to white.
     stdscr.bkgd(' ', curses.color_pair(2))
 
-    console_height, console_width = stdscr.getmaxyx()
-    _, title_x = center_start(console_height, console_width, 1, 28)
-    stdscr.addstr(0, title_x, "Agile Engine by Kellan Childers", curses.A_BOLD | curses.A_UNDERLINE)
+    util.add_title(stdscr, "Agile Engine by Kellan Childers")
 
     stdscr.refresh()
-
+    stdscr.getkey()
+"""
+    console_height, console_width = stdscr.getmaxyx()
     main_screen = Screen(console_height, console_width)
     main_screen.show_intro()
     main_screen.start_shopping_list()
 
     while True:
         main_screen.clear_screen()
-        main_screen.do_command()
+        main_screen.do_command()"""
 
 if __name__ == "__main__":
     # curses.wrapper ensures that program will always fully exit from curses mode if an error occurs.

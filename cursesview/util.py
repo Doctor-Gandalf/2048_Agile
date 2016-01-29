@@ -3,7 +3,26 @@ from math import floor
 __author__ = 'Kellan Childers'
 
 
-def center_start(console_height, console_width, window_height, window_width):
+def add_title(window, title,  window_y=0, bold=True, underline=True):
+    """Add a title centered on a line.
+
+    :param window: the window to title
+    :param title: the title to add
+    :param window_y: the height of the title
+    :param bold: whether or not to bold the title
+    :type bold: Boolean
+    :param underline: whether or not to underline the title
+    :type underline: Boolean
+    :return: null
+    """
+    height, width = window.getmaxyx()
+    _, title_x = center(height, width, 1, len(title))
+    window.addstr(window_y, title_x, title,
+                  (curses.A_BOLD if bold else 0) |
+                  (curses.A_UNDERLINE if underline else 0))
+
+
+def center(console_height, console_width, window_height, window_width):
     """Find point to start window on center.
 
     :param console_height: the height of the console
@@ -31,7 +50,7 @@ def size_lim(console_height, console_width, bound_height, bound_width):
     return y, x
 
 
-def color_box(window, start_y, start_x, stop_y, stop_x, color):
+def color_border(window, start_y, start_x, stop_y, stop_x, color):
     """Create a border around a window in a certain color.
 
     :param window: The window to add a border to.
