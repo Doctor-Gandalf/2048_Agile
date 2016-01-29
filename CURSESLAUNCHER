@@ -9,10 +9,10 @@ __author__ = 'Kellan Childers'
 
 
 def app(stdscr):
-    """
+    """Start and control the app.
 
-    :param stdscr:
-    :return:
+    :param stdscr: the standard screen
+    :return: null
     """
 
     # Start up screen and standardize visuals.
@@ -20,11 +20,11 @@ def app(stdscr):
     initialize_window(stdscr)
     util.add_title(stdscr, "Agile Engine by Kellan Childers")
 
-    stdscr.getkey()
+    # This may come in handy later.
+    # console_height, console_width = stdscr.getmaxyx()
 
-"""This may come in handy later.
-   console_height, console_width = stdscr.getmaxyx()
-   """
+    # Run until a key is pressed; useful for testing startup visuals.
+    stdscr.getkey()
 
 if __name__ == "__main__":
     # curses.wrapper ensures that program will always fully exit from curses mode if an error occurs.
