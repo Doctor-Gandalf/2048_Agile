@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-import curses
 import cursesview.util as util
 from os import chdir
 from os.path import dirname, realpath
+from curses import wrapper
 from controller.colorcontroller import create_colorschemes
 from cursesview.initialize import initialize_window
 __author__ = 'Kellan Childers'
@@ -33,4 +33,4 @@ if __name__ == "__main__":
     chdir(dirname(realpath(__file__)))
 
     # curses.wrapper ensures that program will always fully exit from curses mode if an error occurs.
-    curses.wrapper(app)
+    wrapper(app)
