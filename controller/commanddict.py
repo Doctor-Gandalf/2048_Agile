@@ -4,6 +4,8 @@ __author__ = 'Kellan Childers'
    Actual functions should be defined in model.keyfunctions.py."""
 
 
-commands = {"quit": kf.test1,
-            "next": kf.test2
+commands = {"w": kf.move_up,
+            "s": kf.move_down,
+            "a": kf.move_left,
+            "d": kf.move_right
             }
