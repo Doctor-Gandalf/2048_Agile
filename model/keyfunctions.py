@@ -13,23 +13,17 @@ def move(direction):
 
 
 def move_up():
-    """
+    """Move straight up.
+    Convenience function for user facing portion.
 
     :return:
     """
     move('up')
 
 
-def move_right():
-    """
-
-    :return:
-    """
-    move('right')
-
-
 def move_down():
-    """
+    """Move straight up.
+    Convenience function for user facing portion.
 
     :return:
     """
@@ -37,8 +31,18 @@ def move_down():
 
 
 def move_left():
-    """
+    """Move straight up.
+    Convenience function for user facing portion.
 
     :return:
     """
     move('left')
+
+
+def move_right():
+    """Move straight up.
+    Convenience function for user facing portion.
+
+    :return:
+    """
+    move('right')
