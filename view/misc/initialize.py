@@ -1,38 +1,42 @@
-import curses
-
 import view.misc.util as util
-
+from curses import curs_set, color_pair
 __author__ = 'Kellan Childers'
 
 
 def initialize_window(stdscr):
     """Start up standard screen to allow easy startup for apps.
 
-    :param stdscr: the standard screen used in curses
+    :param stdscr: The standard screen used in curses
     :return: null
     """
     # Ensures a clean visual space.
     stdscr.clear()
-    curses.curs_set(False)
+    curs_set(False)
 
     # Set the background of the app to the secondary color.
-    stdscr.bkgd(' ', curses.color_pair(1))
+    stdscr.bkgd(' ', color_pair(1))
     stdscr.refresh()
 
 
 def draw_board(stdscr):
+    """Draw 4x4 grid to act as background board.
+
+    :param stdscr: The standard screen used in curses.
+    :return: null
+    """
     console_height, console_width = stdscr.getmaxyx()
 
+    # This looks ugly but is the simplest way to color this many lines.
     game_height = console_height-1
-    step = int((console_height-6)/4)+1
-    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
-    game_height -= step+1
+    step = int((console_height-6)/4)+2
     util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
     game_height -= step
     util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
-    game_height -= step+1
+    game_height -= step
     util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
-    util.draw_group(stdscr, [(1, x) for x in range(console_width)])
+    game_height -= step
+    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
+    util.draw_group(stdscr, [(0, x) for x in range(console_width)])
 
     game_width = console_width-1
     step = int((console_width-6)/4)+1

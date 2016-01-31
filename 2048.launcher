@@ -26,9 +26,13 @@ def app(stdscr):
     create_colorschemes()
     initialize_window(stdscr)
     draw_board(stdscr)
-    util.add_title(stdscr, "2048 Agile Edition by Kellan Childers")
 
-    draw_tile(stdscr, nt.two_tile, (2, 1), (5, 19))
+    # Title board for visual effect.
+    util.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
+                   color_scheme=2, underline=False)
+
+    # Add a simple tile for testing visuals.
+    draw_tile(stdscr, nt.two_tile, (1, 1), (5, 19))
 
     # Run until a key is pressed; useful for testing misc visuals.
     stdscr.getkey()

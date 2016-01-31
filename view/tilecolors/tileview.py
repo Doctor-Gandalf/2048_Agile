@@ -5,7 +5,8 @@ __author__ = 'Kellan Childers'
 
 
 def draw_tile(window, tile, position, dimensions):
-    """Draw a tile at a place on the board
+    """Draw a tile at a place on the board.
+    Note: the first row will be one character shorter than the others when the console height is odd.
 
     :param window: The window to draw the tile to
     :param tile: The tile to draw
