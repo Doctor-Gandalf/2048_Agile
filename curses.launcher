@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 
+import cursesview.tilecolors.numbertiles as nt
+import cursesview.util as util
+
 from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
-from cursesview.tileview import draw_tile
-
-import cursesview.tilecolors.numbertiles as nt
-import cursesview.util as util
+from cursesview.tilecolors.tileview import draw_tile
 from controller.colorcontroller import create_colorschemes
 from cursesview.initialize import initialize_window, draw_board
 
 __author__ = 'Kellan Childers'
-"""Use this as boilerplate to start new curses projects quickly"""
+"""A simple 2048 clone written for terminals using Python with the Curses framework."""
 
 
 def app(stdscr):

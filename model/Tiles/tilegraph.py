@@ -1,4 +1,4 @@
-from model.graph import Graph
+from model.logic.graph import Graph
 __author__ = 'Kellan Childers'
 
 
