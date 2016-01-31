@@ -1,6 +1,8 @@
 import os
 from json import load
-from controller.commanddict import commands
+
+from controller.keycommands.commanddict import commands
+
 __author__ = 'Kellan Childers'
 
 

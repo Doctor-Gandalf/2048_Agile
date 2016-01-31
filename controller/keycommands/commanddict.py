@@ -1,7 +1,7 @@
-import controller.keyfunctions as kf
+import controller.keycommands.keyfunctions as kf
 __author__ = 'Kellan Childers'
 """Compile all user-facing functions here with easy to remember names to allow keymapping.
-   Actual functions should be defined in controller.keyfunctions."""
+   Actual functions should be defined in controller.keycommands.keyfunctions."""
 
 
 commands = {"up": kf.move_up,
