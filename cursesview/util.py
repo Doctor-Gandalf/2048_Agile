@@ -81,6 +81,7 @@ def draw_group(window, group, character=' ', color_scheme=2):
     except curses.error:
         # curses.error is raised at end of line and can safely be ignored.
         pass
+
     window.refresh()
 
 

@@ -1,7 +1,9 @@
 import os
-from json import load
 from curses import init_pair
-from controller.colordict import colors
+from json import load
+
+from cursesview.colors.colordict import colors
+
 __author__ = 'Kellan Childers'
 
 
@@ -27,3 +29,15 @@ def create_colorschemes():
     init_pair(4, colors[colormap["tertiary"]], colors[colormap["secondary"]])
     init_pair(5, colors[colormap["primary"]], colors[colormap["tertiary"]])
     init_pair(6, colors[colormap["tertiary"]], colors[colormap["primary"]])
+
+
+def set_scheme(background_color):
+    """Set up pair 7 as black with a background color
+
+    :param background_color: The color to use for the background
+    :return: null
+    """
+    if background_color not in colors:
+        raise KeyError("Could not assign colors")
+
+    init_pair(7, colors["black"], colors[background_color])

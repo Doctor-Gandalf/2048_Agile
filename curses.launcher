@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 
-import cursesview.util as util
+from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
-from curses import wrapper
+
+from cursesview.tileview import draw_tile
+
+import cursesview.tilecolors.numbertiles as nt
+import cursesview.util as util
 from controller.colorcontroller import create_colorschemes
 from cursesview.initialize import initialize_window, draw_board
+
 __author__ = 'Kellan Childers'
 """Use this as boilerplate to start new curses projects quickly"""
 
@@ -22,6 +27,8 @@ def app(stdscr):
     initialize_window(stdscr)
     draw_board(stdscr)
     util.add_title(stdscr, "2048 Agile Edition by Kellan Childers")
+
+    draw_tile(stdscr, nt.two_tile, (2, 1), (5, 19))
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()
