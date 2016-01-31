@@ -1,4 +1,4 @@
-import cursesview.util as util
+import cursesview.misc.util as util
 from controller.colorcontroller import set_scheme
 from model.tiles.tile import Tile
 __author__ = 'Kellan Childers'

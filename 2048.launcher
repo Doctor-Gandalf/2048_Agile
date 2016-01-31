@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 
+import cursesview.misc.util as util
 import cursesview.tilecolors.numbertiles as nt
-import cursesview.util as util
 
 from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
-from cursesview.tilecolors.tileview import draw_tile
 from controller.colorcontroller import create_colorschemes
-from cursesview.initialize import initialize_window, draw_board
+from cursesview.misc.initialize import initialize_window, draw_board
+from cursesview.tilecolors.tileview import draw_tile
 
 __author__ = 'Kellan Childers'
 """A simple 2048 clone written for terminals using Python with the Curses framework."""
@@ -22,7 +22,7 @@ def app(stdscr):
     :return: null
     """
 
-    # Start up screen and standardize visuals.
+    # Startup screen and standardize visuals.
     create_colorschemes()
     initialize_window(stdscr)
     draw_board(stdscr)
@@ -30,7 +30,7 @@ def app(stdscr):
 
     draw_tile(stdscr, nt.two_tile, (2, 1), (5, 19))
 
-    # Run until a key is pressed; useful for testing startup visuals.
+    # Run until a key is pressed; useful for testing misc visuals.
     stdscr.getkey()
 
 if __name__ == "__main__":
