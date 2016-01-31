@@ -3,7 +3,7 @@ __author__ = 'Kellan Childers'
 
 
 class Tile(metaclass=ABCMeta):
-    def __init__(self, value, background="white"):
+    def __init__(self, value=0, background="white"):
         self.value = value
         self.background = background
 

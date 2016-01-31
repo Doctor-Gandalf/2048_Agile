@@ -22,5 +22,8 @@ def create_colorschemes():
     # Sets the three main colors for the app screen.
     # First color: text. Second color: background.
     init_pair(1, colors[colormap["primary"]], colors[colormap["secondary"]])
-    init_pair(2, colors[colormap["secondary"]], colors[colormap["tertiary"]])
-    init_pair(3, colors[colormap["primary"]], colors[colormap["tertiary"]])
+    init_pair(2, colors[colormap["secondary"]], colors[colormap["primary"]])
+    init_pair(3, colors[colormap["secondary"]], colors[colormap["tertiary"]])
+    init_pair(4, colors[colormap["tertiary"]], colors[colormap["secondary"]])
+    init_pair(5, colors[colormap["primary"]], colors[colormap["tertiary"]])
+    init_pair(6, colors[colormap["tertiary"]], colors[colormap["primary"]])

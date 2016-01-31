@@ -39,7 +39,7 @@ def center(console_height, console_width, window_height, window_width):
     return start_y, start_x
 
 
-def color_border(window, start_y, start_x, stop_y, stop_x, color):
+def color_border(window, start_y, start_x, stop_y, stop_x, color_scheme):
     """Create a border around a window in a certain color.
 
     :param window: The window to add a border to.
@@ -47,21 +47,41 @@ def color_border(window, start_y, start_x, stop_y, stop_x, color):
     :param start_x: The x portion of the starting coordinate on the screen
     :param stop_y: The y portion of the ending coordinate on the screen
     :param stop_x: The x portion of the ending coordinate on the scree
-    :param color: The color to paint the border
+    :param color_scheme: The color to paint the border
     :return:
     """
     try:
         for i in range(start_y, stop_y):
-            window.addstr(i, start_x, ' ', curses.color_pair(color))
-            window.addstr(i, stop_x, ' ', curses.color_pair(color))
+            window.addstr(i, start_x, ' ', curses.color_pair(color_scheme))
+            window.addstr(i, stop_x, ' ', curses.color_pair(color_scheme))
         for i in range(start_x, stop_x):
-            window.addstr(start_y, i, ' ', curses.color_pair(color))
-            window.addstr(stop_y, i, ' ', curses.color_pair(color))
+            window.addstr(start_y, i, ' ', curses.color_pair(color_scheme))
+            window.addstr(stop_y, i, ' ', curses.color_pair(color_scheme))
         # for loops fail to add last element.
-        window.addstr(stop_y, stop_x, ' ', curses.color_pair(color))
+        window.addstr(stop_y, stop_x, ' ', curses.color_pair(color_scheme))
     except curses.error:
         # curses.error is raised at end of line and can safely be ignored.
         pass
+    window.refresh()
+
+
+def draw_group(window, group, character=' ', color_scheme=2):
+    """Draw a group of points
+
+    :param window:
+    :param group: The list of points in form (y, x) to draw
+    :param character: The type of character to draw (default space)
+    :type character: String
+    :param color_scheme: The number of the color scheme to use for coloring
+    :return:
+    """
+    try:
+        for point in group:
+            window.addstr(point[0], point[1], character, curses.color_pair(color_scheme))
+    except curses.error:
+        # curses.error is raised at end of line and can safely be ignored.
+        pass
+    window.refresh()
 
 
 def size_lim(console_height, console_width, bound_height, bound_width):

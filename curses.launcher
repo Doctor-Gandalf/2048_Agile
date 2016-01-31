@@ -5,7 +5,7 @@ from os import chdir
 from os.path import dirname, realpath
 from curses import wrapper
 from controller.colorcontroller import create_colorschemes
-from cursesview.initialize import initialize_window
+from cursesview.initialize import initialize_window, draw_board
 __author__ = 'Kellan Childers'
 """Use this as boilerplate to start new curses projects quickly"""
 
@@ -20,10 +20,8 @@ def app(stdscr):
     # Start up screen and standardize visuals.
     create_colorschemes()
     initialize_window(stdscr)
-    util.add_title(stdscr, "Agile Engine by Kellan Childers")
-
-    # This may come in handy later.
-    # console_height, console_width = stdscr.getmaxyx()
+    draw_board(stdscr)
+    util.add_title(stdscr, "2048 Agile Edition by Kellan Childers")
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()
