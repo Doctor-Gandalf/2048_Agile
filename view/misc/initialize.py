@@ -1,6 +1,6 @@
 import curses
 
-import cursesview.misc.util as util
+import view.misc.util as util
 
 __author__ = 'Kellan Childers'
 

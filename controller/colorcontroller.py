@@ -2,7 +2,7 @@ import os
 from curses import init_pair
 from json import load
 
-from cursesview.colors.colordict import colors
+from view.colors.colordict import colors
 
 __author__ = 'Kellan Childers'
 
