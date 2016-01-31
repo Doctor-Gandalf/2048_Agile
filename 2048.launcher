@@ -35,7 +35,7 @@ def app(stdscr):
     draw_tile(stdscr, nt.two_tile, (1, 1), (4, 19))
     draw_tile(stdscr, nt.two_tile, (6, 21), (10, 39))
 
-    # Run until a key is pressed; useful for testing misc visuals.
+    # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()
 
 if __name__ == "__main__":
