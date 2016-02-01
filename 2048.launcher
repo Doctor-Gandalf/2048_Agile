@@ -33,7 +33,7 @@ def app(stdscr):
 
     # Add a simple pair of tiles for testing visuals.
     draw_tile(stdscr, nt.two_tile, (1, 1), (4, 19))
-    draw_tile(stdscr, nt.two_tile, (6, 21), (10, 39))
+    draw_tile(stdscr, nt.eight_tile, (6, 21), (10, 39))
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()
