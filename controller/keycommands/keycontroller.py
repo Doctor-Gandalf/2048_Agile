@@ -16,6 +16,7 @@ def execute_command(key):
     :return: the result of the command called.
     """
     # App has to change directories in case it was opened outside its folder.
+    # Applying dirname multiple times goes one level back each time.
     chdir(dirname(dirname(dirname(realpath(__file__)))))
 
     # os.getcwd here returns the path of the whole app, not /controller.

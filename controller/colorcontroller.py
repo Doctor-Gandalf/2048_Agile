@@ -15,6 +15,7 @@ def create_colorschemes():
     :return: null
     """
     # App has to change directories in case it was opened outside its folder.
+    # Applying dirname multiple times goes one level back each time.
     chdir(dirname(dirname(realpath(__file__))))
 
     # os.getcwd here returns the path of the whole app, not /controller.
@@ -54,6 +55,7 @@ def set_tiles():
     :return: A dictionary of tile values and background colors
     """
     # App has to change directories in case it was opened outside its folder.
+    # Applying dirname multiple times goes one level back each time.
     chdir(dirname(dirname(realpath(__file__))))
 
     # os.getcwd here returns the path of the whole app, not /controller.
