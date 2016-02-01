@@ -1,5 +1,7 @@
 import os
 from json import load
+from os import chdir, getcwd
+from os.path import dirname, realpath, join
 
 from controller.keycommands.commanddict import commands
 
@@ -13,8 +15,11 @@ def execute_command(key):
     :param key: the key to call the command.
     :return: the result of the command called.
     """
+    # App has to change directories in case it was opened outside its folder.
+    chdir(dirname(dirname(dirname(realpath(__file__)))))
+
     # os.getcwd here returns the path of the whole app, not /controller.
-    with open(os.path.join(os.getcwd(), 'settings/keymap.config'), 'r') as config_file:
+    with open(join(getcwd(), 'settings/keymap.config'), 'r') as config_file:
         keymap = load(config_file)
 
     # The key needs to be in both the keymap and a valid function call.

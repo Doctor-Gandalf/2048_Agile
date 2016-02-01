@@ -1,4 +1,5 @@
-import os
+from os import chdir, getcwd
+from os.path import dirname, realpath, join
 from curses import init_pair
 from json import load
 
@@ -13,8 +14,11 @@ def create_colorschemes():
 
     :return: null
     """
+    # App has to change directories in case it was opened outside its folder.
+    chdir(dirname(dirname(realpath(__file__))))
+
     # os.getcwd here returns the path of the whole app, not /controller.
-    with open(os.path.join(os.getcwd(), 'settings/colors.config'), 'r') as config_file:
+    with open(join(getcwd(), 'settings/colors.config'), 'r') as config_file:
         colormap = load(config_file)
 
     for _, color in colormap.items():
@@ -49,8 +53,11 @@ def set_tiles():
 
     :return: A dictionary of tile values and background colors
     """
+    # App has to change directories in case it was opened outside its folder.
+    chdir(dirname(dirname(realpath(__file__))))
+
     # os.getcwd here returns the path of the whole app, not /controller.
-    with open(os.path.join(os.getcwd(), 'settings/tiles.config'), 'r') as config_file:
+    with open(join(getcwd(), 'settings/tiles.config'), 'r') as config_file:
         tile_dict = load(config_file)
 
     for value, color in tile_dict.items():
