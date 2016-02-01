@@ -50,6 +50,7 @@ def color_border(window, start_y, start_x, stop_y, stop_x, color_scheme):
     :param color_scheme: The color to paint the border
     :return:
     """
+    # You'll want to make this use draw_group. Don't.
     try:
         for i in range(start_y, stop_y):
             window.addstr(i, start_x, ' ', curses.color_pair(color_scheme))
@@ -65,7 +66,7 @@ def color_border(window, start_y, start_x, stop_y, stop_x, color_scheme):
     window.refresh()
 
 
-def draw_group(window, group, character=' ', color_scheme=2):
+def draw_group(window, group, color_scheme, character=' '):
     """Draw a group of points
 
     :param window:

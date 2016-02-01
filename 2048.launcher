@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 
 import view.misc.util as util
-import view.tilecolors.numbertiles as nt
 
 from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
-from controller.colorcontroller import create_colorschemes
+from controller.colorcontroller import create_colorschemes, set_tile_colors
 from view.misc.initialize import initialize_window, draw_board
-from view.tilecolors.tileview import draw_tile
+from view.misc.testdraw import test_draw
 
 __author__ = 'Kellan Childers'
 """A simple 2048 clone written for terminals using Python with the Curses framework."""
@@ -22,8 +21,11 @@ def app(stdscr):
     :return: null
     """
 
-    # Startup screen and standardize visuals.
+    # Set up color schemes
     create_colorschemes()
+    set_tile_colors()
+
+    # Startup screen and standardize visuals.
     initialize_window(stdscr)
     draw_board(stdscr)
 
@@ -31,9 +33,8 @@ def app(stdscr):
     util.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
                    color_scheme=2, underline=False)
 
-    # Add a simple pair of tiles for testing visuals.
-    draw_tile(stdscr, nt.two_tile, (1, 1), (4, 19))
-    draw_tile(stdscr, nt.eight_tile, (6, 21), (10, 39))
+    # Add all tiles to test appearance
+    test_draw(stdscr)
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()

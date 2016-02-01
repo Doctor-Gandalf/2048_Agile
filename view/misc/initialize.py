@@ -29,22 +29,22 @@ def draw_board(stdscr):
     # This looks ugly but is the simplest way to color this many lines.
     game_height = console_height-1
     step = int((console_height-6)/4)+2
-    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
+    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)], 2)
     game_height -= step
-    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
+    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)], 2)
     game_height -= step
-    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
+    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)], 2)
     game_height -= step
-    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)])
-    util.draw_group(stdscr, [(0, x) for x in range(console_width)])
+    util.draw_group(stdscr, [(game_height, x) for x in range(console_width)], 2)
+    util.draw_group(stdscr, [(0, x) for x in range(console_width)], 2)
 
     game_width = console_width-1
     step = int((console_width-6)/4)+1
-    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)])
+    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)], 2)
     game_width -= step+1
-    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)])
+    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)], 2)
     game_width -= step
-    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)])
+    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)], 2)
     game_width -= step+1
-    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)])
-    util.draw_group(stdscr, [(y, 0) for y in range(1, console_height)])
+    util.draw_group(stdscr, [(y, game_width) for y in range(1, console_height)], 2)
+    util.draw_group(stdscr, [(y, 0) for y in range(1, console_height)], 2)

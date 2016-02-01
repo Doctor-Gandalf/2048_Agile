@@ -33,6 +33,7 @@ def create_colorschemes():
 
 def set_scheme(background_color):
     """Set up pair 7 as black with a background color
+    Note: depreciated. Any time a color scheme is changed, it is changed for all drawn characters
 
     :param background_color: The color to use for the background
     :return: null
@@ -57,3 +58,15 @@ def set_tiles():
             raise KeyError("Could not assign colors")
 
     return tile_dict
+
+
+def set_tile_colors():
+    """Set up the color schemes 7 through 18 for use with tiles.
+
+    :return: null
+    """
+    tile_dict = set_tiles()
+
+    for i in range(1, len(tile_dict.items())+1):
+        value = 2**i
+        init_pair(i+6, colors["black"], colors[tile_dict[str(value)]])
