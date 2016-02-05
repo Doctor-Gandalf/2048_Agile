@@ -1,5 +1,5 @@
 import view.tilecolors.numbertiles as nt
-from view.tilecolors.tileview import draw_tile
+from view.tilecolors.tileview import draw_tile, draw_tile_on_board
 __author__ = 'Kellan Childers'
 
 
@@ -8,6 +8,11 @@ def test_draw(stdscr):
 
     :param stdscr: The standard screen
     :return: null
+    """
+    """
+    for i in range(4):
+        for j in range(5):
+            draw_tile_on_board(stdscr, nt.two_tile, (i, j))
     """
     draw_tile(stdscr, nt.two_tile, (1, 1), (4, 19))
     draw_tile(stdscr, nt.four_tile, (1, 21), (4, 39))

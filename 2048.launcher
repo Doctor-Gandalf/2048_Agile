@@ -25,16 +25,12 @@ def app(stdscr):
     create_colorschemes()
     set_tile_colors()
 
-    # Startup screen and standardize visuals.
+    # Startup screen and draw board visuals.
     initialize_window(stdscr)
     draw_board(stdscr)
 
-    # Title board for visual effect.
-    util.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
-                   color_scheme=2, underline=False)
-
     # Add all tiles to test appearance
-    test_draw(stdscr)
+    test_draw(stdscr) #TODO Fix the grid coordinates
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()

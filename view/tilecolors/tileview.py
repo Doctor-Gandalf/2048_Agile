@@ -1,13 +1,13 @@
 import view.misc.util as util
 
-from curses import color_pair
-from math import log, floor
+from curses import color_pair, error
+from math import log
 from model.tiles.tile import Tile
 __author__ = 'Kellan Childers'
 
 
 def draw_tile(window, tile, position, dimensions):
-    """Draw a tile at a place on the board.
+    """Draw a tile at a place on the window.
     Note: the first row will be one character shorter than the others when the console height is odd.
 
     :param window: The window to draw the tile to
@@ -29,3 +29,27 @@ def draw_tile(window, tile, position, dimensions):
     window.addstr(title_y, title_x, str(tile.value), color_pair(color_scheme))
 
     window.refresh()
+
+
+def draw_tile_on_board(window, tile, location):
+    """Draw a tile at a place on the board.
+
+    :param window: the window to draw the tile to
+    :param tile: the tile to draw
+    :type tile: Tile
+    :param location: the location on the board to draw to
+    :return: null
+    """
+    x, y = location
+    x = (x-1) * 20 + 1
+    y = (y-1) * 6
+    end_x = x + 18
+    end_y = y + 4
+    y += 1 if y == 0 else 0
+
+    position = y, x
+    dimensions = end_y, end_x
+    try:
+        draw_tile(window, tile, position, dimensions)
+    except error:
+        pass
