@@ -39,7 +39,7 @@ class Plot:
         :return: True if equal, false otherwise
         """
         try:
-            return True if self.__plot == other.plot else False
+            return True if self.__plot == other.__plot else False
         except AttributeError:
             return False
 
