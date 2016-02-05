@@ -61,7 +61,7 @@ def draw_group(window, group, color_scheme=1, character=' '):
     :param color_scheme: the number of the color scheme to use for coloring (default 1)
     :param character: the type of character to draw (default space)
     :type character: String
-    :return:
+    :return: null
     """
     for point in group:
         try:

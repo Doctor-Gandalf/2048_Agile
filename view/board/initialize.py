@@ -1,4 +1,4 @@
-import view.board.draw as util
+import view.board.draw as draw
 from curses import curs_set, color_pair
 __author__ = 'Kellan Childers'
 
@@ -18,14 +18,14 @@ def initialize_window(stdscr):
     stdscr.refresh()
 
 
-def draw_board(stdscr):
+def draw_board_background(stdscr):
     """Draw 4x4 grid to act as background board.
 
     :param stdscr: The standard screen used in curses.
     :return: null
     """
     console_height, console_width = stdscr.getmaxyx()
-    util.color_hash(stdscr, (0, 0), (console_width, console_height), 2)
-    util.color_border(stdscr, (0, 0), (console_width, console_height), 2)
-    util.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
+    draw.color_hash(stdscr, (0, 0), (console_width, console_height), 2)
+    draw.color_border(stdscr, (0, 0), (console_width, console_height), 2)
+    draw.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
                    color_scheme=2, underline=False)

@@ -1,5 +1,5 @@
-import view.board.draw as util
 import view.viewmath as vmth
+import view.board.draw as draw
 
 from curses import color_pair, error
 from math import log
@@ -22,7 +22,7 @@ def draw_tile(window, tile, position, dimensions):
     stop_x, stop_y = dimensions
     color_scheme = int(log(tile.value, 2))+6
 
-    util.draw_group(window,
+    draw.draw_group(window,
                     [(y, x) for y in range(start_y, stop_y + 1)
                      for x in range(start_x, stop_x + 1)],
                     color_scheme=color_scheme,
@@ -49,3 +49,15 @@ def draw_tile_on_board(window, tile, location):
         draw_tile(window, tile, position, dimensions)
     except error:
         pass
+
+
+def draw_board(window, stdbrd):
+    """Draw the contents of the board.
+
+    :param window: the window to draw on
+    :param stdbrd: the standard board
+    :return: null
+    """
+    for x in range(4):
+        for y in range(4):
+            draw_tile_on_board(window, stdbrd[x][y], (x, y))
