@@ -1,4 +1,4 @@
-import view.misc.util as util
+import view.board.util as util
 
 from curses import color_pair, error
 from math import log
@@ -19,8 +19,9 @@ def draw_tile(window, tile, position, dimensions):
     """
     color_scheme = int(log(tile.value, 2))+6
 
-    util.draw_group(window, [(y, x) for y in range(position[0], dimensions[0] + 1)
-                             for x in range(position[1], dimensions[1] + 1)],
+    util.draw_group(window,
+                    [(y, x) for y in range(position[0], dimensions[0] + 1)
+                     for x in range(position[1], dimensions[1] + 1)],
                     color_scheme=color_scheme,
                     character=" ")
 
@@ -42,10 +43,12 @@ def draw_tile_on_board(window, tile, location):
     """
     x, y = location
     x = (x-1) * 20 + 1
-    y = (y-1) * 6
+    y = (y-1) * 6 + 1
     end_x = x + 18
     end_y = y + 4
     y += 1 if y == 0 else 0
+    end_x -= 1 if location[0] == 4 else 0
+    end_y -= 1 if location[1] == 4 else 0
 
     position = y, x
     dimensions = end_y, end_x

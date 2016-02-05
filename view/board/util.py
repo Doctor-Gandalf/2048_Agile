@@ -1,5 +1,7 @@
 import curses
-import view.misc.math as mth
+
+import view.math as mth
+
 __author__ = 'Kellan Childers'
 
 

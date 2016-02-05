@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
-import view.misc.util as util
+import view.board.util as util
 
 from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
 from controller.colorcontroller import create_colorschemes, set_tile_colors
-from view.misc.initialize import initialize_window, draw_board
-from view.misc.testdraw import test_draw
+from view.board.initialize import initialize_window, draw_board
+from view.board.testdraw import test_draw
 
 __author__ = 'Kellan Childers'
 """A simple 2048 clone written for terminals using Python with the Curses framework."""
@@ -30,7 +30,7 @@ def app(stdscr):
     draw_board(stdscr)
 
     # Add all tiles to test appearance
-    test_draw(stdscr) #TODO Fix the grid coordinates
+    test_draw(stdscr)
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()

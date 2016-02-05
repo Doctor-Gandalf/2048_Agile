@@ -9,8 +9,8 @@ def test_draw(stdscr):
     :param stdscr: The standard screen
     :return: null
     """
-    """
-    for i in range(4):
+
+    for i in range(5):
         for j in range(5):
             draw_tile_on_board(stdscr, nt.two_tile, (i, j))
     """
@@ -33,3 +33,4 @@ def test_draw(stdscr):
     draw_tile(stdscr, nt.two_tile, (18, 21), (22, 39))
     draw_tile(stdscr, nt.two_tile, (18, 41), (22, 58))
     draw_tile(stdscr, nt.two_tile, (18, 60), (22, 78))
+    """
