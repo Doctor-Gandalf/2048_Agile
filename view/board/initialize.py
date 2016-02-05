@@ -6,7 +6,7 @@ __author__ = 'Kellan Childers'
 def initialize_window(stdscr):
     """Start up standard screen to allow easy startup for apps.
 
-    :param stdscr: The standard screen used in curses
+    :param stdscr: the standard screen used in curses
     :return: null
     """
     # Ensures a clean visual space.
@@ -21,7 +21,7 @@ def initialize_window(stdscr):
 def draw_board_background(stdscr):
     """Draw 4x4 grid to act as background board.
 
-    :param stdscr: The standard screen used in curses.
+    :param stdscr: the standard screen used in curses.
     :return: null
     """
     console_height, console_width = stdscr.getmaxyx()
@@ -29,3 +29,13 @@ def draw_board_background(stdscr):
     draw.color_border(stdscr, (0, 0), (console_width, console_height), 2)
     draw.add_title(stdscr, "2048 Agile Edition by Kellan Childers",
                    color_scheme=2, underline=False)
+
+
+def reset_board(stdscr):
+    """Reset appearance between ticks to allow new tiles to be drawn
+
+    :param stdscr: the standard screen used in curses
+    :return: null
+    """
+    stdscr.clear()
+    draw_board_background(stdscr)

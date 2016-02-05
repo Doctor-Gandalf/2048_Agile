@@ -4,10 +4,10 @@ from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
-from model.board import board
 from controller.colorcontroller import create_colorschemes
 from controller.tilecontroller import set_tile_colors
-from view.board.initialize import initialize_window, draw_board_background
+from model.board import board, place_tile
+from view.board.initialize import *
 from view.board.demo import demo
 from view.tilecolors.tileview import draw_board
 
@@ -31,12 +31,23 @@ def app(stdscr):
     initialize_window(stdscr)
     draw_board_background(stdscr)
 
-    # Add all tiles to test appearance
+    # Add all tiles to demo appearance
     demo()
-
     draw_board(stdscr, board)
 
     # Run until a key is pressed; useful for testing startup visuals.
+    stdscr.getkey()
+
+    for y in range(len(board[0])):
+        for x in range(len(board)):
+            board[x][y] = None
+
+    place_tile(board)
+    place_tile(board)
+
+    reset_board(stdscr)
+    draw_board(stdscr, board)
+
     stdscr.getkey()
 
 if __name__ == "__main__":

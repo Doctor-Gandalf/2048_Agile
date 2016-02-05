@@ -44,6 +44,8 @@ def draw_tile_on_board(window, tile, location):
     :param location: the location on the board to draw to
     :return: null
     """
+    if tile is None:
+        return
     position, dimensions = vmth.convert_loc_to_pos(location, window.getmaxyx())
     try:
         draw_tile(window, tile, position, dimensions)
