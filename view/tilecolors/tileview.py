@@ -1,4 +1,5 @@
-import view.board.util as util
+import view.board.draw as util
+import view.viewmath as vmth
 
 from curses import color_pair, error
 from math import log
@@ -17,16 +18,18 @@ def draw_tile(window, tile, position, dimensions):
     :param dimensions: The size of the area to draw the tile in (y, x coordinate system)
     :return: null
     """
+    start_x, start_y = position
+    stop_x, stop_y = dimensions
     color_scheme = int(log(tile.value, 2))+6
 
     util.draw_group(window,
-                    [(y, x) for y in range(position[0], dimensions[0] + 1)
-                     for x in range(position[1], dimensions[1] + 1)],
+                    [(y, x) for y in range(start_y, stop_y + 1)
+                     for x in range(start_x, stop_x + 1)],
                     color_scheme=color_scheme,
                     character=" ")
 
-    title_y = position[0]
-    title_x = position[1]
+    title_y = start_y
+    title_x = start_x
     window.addstr(title_y, title_x, str(tile.value), color_pair(color_scheme))
 
     window.refresh()
@@ -41,17 +44,7 @@ def draw_tile_on_board(window, tile, location):
     :param location: the location on the board to draw to
     :return: null
     """
-    x, y = location
-    x = (x-1) * 20 + 1
-    y = (y-1) * 6 + 1
-    end_x = x + 18
-    end_y = y + 4
-    y += 1 if y == 0 else 0
-    end_x -= 1 if location[0] == 4 else 0
-    end_y -= 1 if location[1] == 4 else 0
-
-    position = y, x
-    dimensions = end_y, end_x
+    position, dimensions = vmth.convert_loc_to_pos(location, window.getmaxyx())
     try:
         draw_tile(window, tile, position, dimensions)
     except error:

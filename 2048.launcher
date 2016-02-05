@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 
-import view.board.util as util
+import view.board.draw as util
 
 from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
-from controller.colorcontroller import create_colorschemes, set_tile_colors
+from controller.colorcontroller import create_colorschemes
+from controller.tilecontroller import set_tile_colors
 from view.board.initialize import initialize_window, draw_board
-from view.board.testdraw import test_draw
+from view.board.demo import demo
 
 __author__ = 'Kellan Childers'
 """A simple 2048 clone written for terminals using Python with the Curses framework."""
+# TODO fix odd dimension display issue
 
 
 def app(stdscr):
@@ -30,7 +32,7 @@ def app(stdscr):
     draw_board(stdscr)
 
     # Add all tiles to test appearance
-    test_draw(stdscr)
+    demo(stdscr)
 
     # Run until a key is pressed; useful for testing startup visuals.
     stdscr.getkey()

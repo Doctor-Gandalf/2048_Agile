@@ -47,35 +47,3 @@ def set_scheme(background_color):
         raise KeyError("Could not assign colors")
 
     init_pair(7, colors["black"], colors[background_color])
-
-
-def set_tiles():
-    """Load the tile colors and make sure they are valid.
-
-    :return: A dictionary of tile values and background colors
-    """
-    # App has to change directories in case it was opened outside its folder.
-    # Applying dirname multiple times goes one level back each time.
-    chdir(dirname(dirname(realpath(__file__))))
-
-    # os.getcwd here returns the path of the whole app, not /controller.
-    with open(join(getcwd(), 'settings/tiles.config'), 'r') as config_file:
-        tile_dict = load(config_file)
-
-    for value, color in tile_dict.items():
-        if color not in colors:
-            raise KeyError("Could not assign colors")
-
-    return tile_dict
-
-
-def set_tile_colors():
-    """Set up the color schemes 7 through 18 for use with tiles.
-
-    :return: null
-    """
-    tile_dict = set_tiles()
-
-    for i in range(1, len(tile_dict.items())+1):
-        value = 2**i
-        init_pair(i+6, colors["black"], colors[tile_dict[str(value)]])

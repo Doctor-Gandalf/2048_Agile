@@ -1,4 +1,4 @@
-from math import floor
+from math import floor, ceil
 __author__ = 'Kellan Childers'
 """Functions which provide view functionality but don't interface with Curses."""
 
@@ -31,6 +31,33 @@ def center(little_point, big_point):
     start_x = floor((big_width - little_width) / 2)
     start_y = floor((big_height - little_height) / 2)
     return start_x, start_y
+
+
+def convert_loc_to_pos(location, view_size):
+    """Convert a location on the plot to a position on the view.
+
+    :param location: the location on the plot
+    :param view_size: the dimensions of the view
+    :return: a pair of coordinates for start and stop points
+    """
+    view_width, view_height = view_size
+    step_x, step_y = floor((view_width-5)/4) + 1, floor((view_height-5)/4) + 1
+    start_x, start_y = location
+
+    # I really have no idea why this specifically works.
+    start_x = start_x * (step_x + 1) + 1
+    start_y = start_y * (step_y + 1) + 1
+    end_x = start_x + step_x - 1
+    end_y = start_y + step_y - 1
+
+    start_y += 1 if start_y == 0 else 0
+    end_x -= 1 if location[0] == 3 else 0
+    end_y -= 1 if location[1] == 3 else 0
+
+    position = start_y, start_x
+    dimensions = end_y, end_x
+
+    return position, dimensions
 
 
 def create_box(start, stop):

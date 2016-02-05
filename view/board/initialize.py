@@ -1,4 +1,4 @@
-import view.board.util as util
+import view.board.draw as util
 from curses import curs_set, color_pair
 __author__ = 'Kellan Childers'
 
