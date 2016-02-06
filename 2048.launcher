@@ -36,8 +36,6 @@ def app(stdscr):
     initialize_window(stdscr)
     draw_board_background(stdscr)
 
-    running = True
-
     # Show intro screen and start game.
     for i in range(2):
         if i == 0:
