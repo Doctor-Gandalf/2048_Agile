@@ -3,13 +3,23 @@ __author__ = 'Kellan Childers'
    Only functions defined here can be executed from a key command or mouse input."""
 
 
+def end():
+    """Quit the game."""
+    return False
+
+
+def skip():
+    """Continue the game without executing a function."""
+    return True
+
+
 def move(direction):
     """Move all tiles a given direction.
 
     :param direction: The direction to move the tiles
     :return:
     """
-    pass
+    return True
 
 
 def move_up():
@@ -18,7 +28,7 @@ def move_up():
 
     :return: result of move(direction)
     """
-    move('up')
+    return move('up')
 
 
 def move_down():
@@ -27,7 +37,7 @@ def move_down():
 
     :return: result of move(direction)
     """
-    move('down')
+    return move('down')
 
 
 def move_left():
@@ -36,7 +46,7 @@ def move_left():
 
     :return: result of move(direction)
     """
-    move('left')
+    return move('left')
 
 
 def move_right():
@@ -45,4 +55,4 @@ def move_right():
 
     :return: result of move(direction)
     """
-    move('right')
+    return move('right')

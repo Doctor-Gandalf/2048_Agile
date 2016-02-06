@@ -4,12 +4,16 @@ from curses import wrapper
 from os import chdir
 from os.path import dirname, realpath
 
+from controller.keycommands.keycontroller import execute_command, load_keys
 from controller.colorcontroller import create_colorschemes
 from controller.tilecontroller import set_tile_colors
-from model.board import board, place_tile
+
+import model.board as brd
+from model.board import board
+
 from view.board.initialize import *
 from view.board.demo import demo
-from view.tilecolors.tileview import draw_board
+from view.tilecolors.tileview import take_turn
 
 __author__ = 'Kellan Childers'
 """A simple 2048 clone written for terminals using Python with the Curses framework."""
@@ -23,32 +27,39 @@ def app(stdscr):
     :return: null
     """
 
-    # Set up color schemes
+    # Set up color schemes and key commands.
     create_colorschemes()
     set_tile_colors()
+    keymap = load_keys()
 
     # Startup screen and draw board visuals.
     initialize_window(stdscr)
     draw_board_background(stdscr)
 
-    # Add all tiles to demo appearance
-    demo()
-    draw_board(stdscr, board)
+    running = True
 
-    # Run until a key is pressed; useful for testing startup visuals.
-    stdscr.getkey()
+    # Show intro screen and start game.
+    for i in range(2):
+        if i == 0:
+            # Add all tiles to demo appearance.
+            commands = [brd.clear_board, demo]
+            tile_count = 0
+        else:
+            # Clear screen and start game.
+            commands = [brd.clear_board]
+            tile_count = 2
 
-    for y in range(len(board[0])):
-        for x in range(len(board)):
-            board[x][y] = None
+        key = take_turn(stdscr, board, *commands, tile_count=tile_count)
+        running = execute_command(key, keymap)
 
-    place_tile(board)
-    place_tile(board)
+        if not running:
+            break
 
-    reset_board(stdscr)
-    draw_board(stdscr, board)
+    # Take turns continually until the game ends or player quits
+    while running:
+        key = take_turn(stdscr, board)
+        running = execute_command(key, keymap)
 
-    stdscr.getkey()
 
 if __name__ == "__main__":
     # App has to change directories in case it was opened outside its folder.

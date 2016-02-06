@@ -31,7 +31,7 @@ def draw_board_background(stdscr):
                    color_scheme=2, underline=False)
 
 
-def reset_board(stdscr):
+def reset_screen(stdscr):
     """Reset appearance between ticks to allow new tiles to be drawn
 
     :param stdscr: the standard screen used in curses

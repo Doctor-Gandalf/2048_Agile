@@ -7,5 +7,7 @@ __author__ = 'Kellan Childers'
 commands = {"up": kf.move_up,
             "down": kf.move_down,
             "left": kf.move_left,
-            "right": kf.move_right
+            "right": kf.move_right,
+            "quit": kf.end,
+            "continue": kf.skip
             }

@@ -1,10 +1,36 @@
 import view.viewmath as vmth
 import view.board.draw as draw
+from view.board.initialize import reset_screen
 
 from curses import color_pair, error
 from math import log
+
+from model.board import place_tile
 from model.tiles.tile import Tile
 __author__ = 'Kellan Childers'
+
+
+def take_turn(stdscr, stdbrd, *args, tile_count=1):
+    """Execute a turn of the game.
+
+    :param stdscr: the standard screen
+    :param stdbrd: the standard board
+    :param tile_count: the number of tiles to add (default 1)
+    :param args: any extra functions to execute
+    :return: a key
+    """
+    reset_screen(stdscr)
+    if args:
+        for function in args:
+            function(stdbrd)
+    try:
+        for _ in range(tile_count):
+            place_tile(stdbrd)
+    except IndexError:
+        return 'q'
+    draw_board(stdscr, stdbrd)
+    # Wait until a key is pressed; useful for testing startup visuals.
+    return stdscr.getkey()
 
 
 def draw_tile(window, tile, position, dimensions):
